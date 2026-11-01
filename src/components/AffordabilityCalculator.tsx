@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { calculateAffordability } from '../lib/affordability';
 import { STATES } from '../data/states';
 import { findStateBySlug } from '../lib/states';
+import AdSlot from './AdSlot';
 
 // 금액을 $1,234 형태로 보여주는 함수
 const usd = (n: number) =>
@@ -188,7 +189,9 @@ export default function AffordabilityCalculator(props: { initialTaxRatePct?: num
           )}
         </section>
       </div>
+
+      {/* 계산 결과 하단 반응형 애드센스 광고 슬롯 */}
+      <AdSlot format="horizontal" />
     </>
   );
 }
-

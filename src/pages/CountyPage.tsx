@@ -12,6 +12,7 @@ import {
   type County,
 } from '../lib/counties';
 import { PROPERTY_TAX_SOURCE } from '../data/states';
+import { usePageSeo } from '../lib/seo';
 
 // 금액을 $1,234 형태로 보여주는 함수
 const usd = (n: number) =>
@@ -39,6 +40,21 @@ export default function CountyPage() {
     };
   }, [state?.slug]);
 
+  const county = list ? findCounty(list, countySlug) : undefined;
+
+  // 카운티 전용 SEO 메타태그 설정 (데이터가 확인된 카운티만 고유 제목/설명을 넣습니다)
+  usePageSeo({
+    title:
+      state && county
+        ? `${county.name}, ${state.abbr} Mortgage & Property Tax Calculator (${county.ratePct.toFixed(2)}% Rate)`
+        : 'County Property Tax & Mortgage Calculator | MortgageSmart',
+    description:
+      state && county
+        ? `Estimate your monthly mortgage payment in ${county.name}, ${state.name}. Effective property tax rate is ${county.ratePct.toFixed(2)}% compared to the ${state.propertyTaxRatePct.toFixed(2)}% ${state.name} average.`
+        : 'Calculate your monthly mortgage payment with county-level US property tax rates.',
+    path: state && county ? `/mortgage/${state.slug}/${county.slug}` : '/mortgage',
+  });
+
   // 없는 주소 안내 화면 (보안: 입력된 주소 문자열은 화면에 출력하지 않습니다)
   const notFound = (
     <div>
@@ -52,8 +68,6 @@ export default function CountyPage() {
 
   if (!state) return notFound;
   if (list === null) return <p className="text-slate-600">Loading...</p>;
-
-  const county = findCounty(list, countySlug);
   if (!county) return notFound;
 
   // ---- 화면에 보여줄 계산값들 ----
@@ -153,4 +167,3 @@ export default function CountyPage() {
     </div>
   );
 }
-

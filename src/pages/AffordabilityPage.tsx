@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom';
 import AffordabilityCalculator from '../components/AffordabilityCalculator';
+import { usePageSeo } from '../lib/seo';
 
 // /affordability 주소에 보여줄 페이지
 export default function AffordabilityPage() {
+  usePageSeo({
+    title: 'Home Affordability Calculator (28/36 Rule & Property Tax) | MortgageSmart',
+    description:
+      'Calculate how much house you can afford based on your annual income, monthly debts, down payment, and state property tax rate.',
+    path: '/affordability',
+  });
+
   return (
     <div>
       <Link to="/" className="text-sm text-blue-600 underline">
@@ -18,4 +26,3 @@ export default function AffordabilityPage() {
     </div>
   );
 }
-

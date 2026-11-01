@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { calculateMortgage } from '../lib/mortgage';
 import AmortizationTable from './AmortizationTable';
+import AdSlot from './AdSlot';
 
 // 금액을 $1,234 형태로 보여주는 함수
 const usd = (n: number) =>
@@ -98,8 +99,10 @@ export default function MortgageCalculator(props: {
         </section>
       </div>
 
+      {/* 계산 결과 카드와 상환 일정표 사이의 반응형 애드센스 광고 슬롯 */}
+      <AdSlot format="horizontal" />
+
       <AmortizationTable loanAmount={result.loanAmount} annualRatePct={rate} years={years} />
     </>
   );
 }
-

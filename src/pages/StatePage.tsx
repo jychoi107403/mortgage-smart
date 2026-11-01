@@ -4,6 +4,7 @@ import MortgageCalculator from '../components/MortgageCalculator';
 import { findStateBySlug } from '../lib/states';
 import { loadCounties, countyUrl, type County } from '../lib/counties';
 import { PROPERTY_TAX_DATA_YEAR, PROPERTY_TAX_SOURCE } from '../data/states';
+import { usePageSeo } from '../lib/seo';
 
 // /mortgage/:state 주소에 보여줄 주별 페이지
 export default function StatePage() {
@@ -11,6 +12,17 @@ export default function StatePage() {
   const { state: slug } = useParams();
   // 허용 목록(51개)에 있는 값만 통과합니다. 없으면 undefined
   const state = findStateBySlug(slug);
+
+  // 페이지별 SEO 메타태그 설정 (존재하는 주일 때만 주 이름을 넣고, 없으면 기본 안내 제목)
+  usePageSeo({
+    title: state
+      ? `${state.name} Mortgage & Property Tax Calculator (${state.propertyTaxRatePct.toFixed(2)}% Avg Rate)`
+      : 'State Not Found | MortgageSmart',
+    description: state
+      ? `Calculate your monthly mortgage payment in ${state.name} with the ${state.propertyTaxRatePct.toFixed(2)}% average effective property tax rate, insurance, PMI, and county-by-county breakdown.`
+      : 'Browse mortgage and property tax calculators across all 50 US states.',
+    path: state ? `/mortgage/${state.slug}` : '/mortgage',
+  });
 
   // 그 주의 카운티 목록 (지연 로딩). null 이면 아직 불러오는 중
   const [counties, setCounties] = useState<County[] | null>(null);

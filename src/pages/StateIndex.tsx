@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
 import { STATES, PROPERTY_TAX_DATA_YEAR, PROPERTY_TAX_SOURCE } from '../data/states';
 import { stateUrl } from '../lib/states';
+import { usePageSeo } from '../lib/seo';
 
 // /mortgage 주소에 보여줄 "주 선택" 목록 페이지
 export default function StateIndex() {
+  usePageSeo({
+    title: 'Mortgage Calculator by State (2026 Property Tax Rates) | MortgageSmart',
+    description:
+      'Compare average effective property tax rates across all 50 US states and DC, and estimate your true monthly mortgage payment.',
+    path: '/mortgage',
+  });
+
   return (
     <div>
       <Link to="/" className="text-sm text-blue-600 underline">
@@ -38,4 +46,3 @@ export default function StateIndex() {
     </div>
   );
 }
-

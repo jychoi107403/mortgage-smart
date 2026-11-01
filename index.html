@@ -2,16 +2,83 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- 브라우저 탭 아이콘 (집 모양 SVG 파비콘) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z'/></svg>"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mortgage Payment Calculator with Property Tax, Insurance & PMI</title>
+
+    <!-- 구글 애드센스 (Google AdSense 계정 인증 및 광고 스크립트) -->
+    <meta name="google-adsense-account" content="ca-pub-1774804957511077" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1774804957511077"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- 기본 검색엔진 최적화 (SEO) 메타태그 및 정식 도메인(Canonical) -->
+    <title>Mortgage Payment Calculator 2026 - Property Tax, Insurance & PMI</title>
+    <meta
+      name="title"
+      content="Mortgage Payment Calculator 2026 - Property Tax, Insurance & PMI"
+    />
     <meta
       name="description"
-      content="Free mortgage calculator that includes property tax, home insurance and PMI. See your true monthly payment."
+      content="Free US mortgage payment calculator with accurate 50-state and 3,131-county effective property tax rates, home insurance, PMI, and amortization schedule."
     />
+    <meta
+      name="keywords"
+      content="mortgage calculator, property tax calculator by county, monthly mortgage payment, home affordability calculator, amortization schedule, PMI calculator"
+    />
+    <meta name="author" content="MortgageSmart" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://mortgage.bangjang.net/" />
+
+    <!-- 소셜 미디어 공유 (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mortgage.bangjang.net/" />
+    <meta
+      property="og:title"
+      content="Mortgage Payment Calculator 2026 - Property Tax, Insurance & PMI"
+    />
+    <meta
+      property="og:description"
+      content="See your true monthly mortgage payment with county-level property tax rates, home insurance, PMI, and extra payment savings."
+    />
+
+    <!-- 트위터(X) 공유 카드 설정 -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:title"
+      content="Mortgage Payment Calculator 2026 - Property Tax, Insurance & PMI"
+    />
+    <meta
+      property="twitter:description"
+      content="Instant mortgage and property tax calculator covering all 50 US states and 3,131 counties."
+    />
+
+    <!-- 구글 구조화 데이터 (JSON-LD: 검색 결과에 금융 웹앱 정보 표시) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "MortgageSmart US Mortgage & Property Tax Calculator",
+        "url": "https://mortgage.bangjang.net/",
+        "description": "Free US mortgage payment and home affordability calculator with 50-state and county-level effective property tax rates.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body class="bg-slate-50 text-slate-900">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
