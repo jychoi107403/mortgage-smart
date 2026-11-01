@@ -159,6 +159,38 @@ export default function CountyPage() {
         </div>
       </section>
 
+      {/* 미국 검색엔진 롱테일 키워드 및 FAQPage 스키마 매칭용 FAQ 섹션 */}
+      <section className="mt-6 space-y-4 rounded-xl bg-white p-5 shadow">
+        <h2 className="text-xl font-bold text-slate-900">
+          {county.name}, {state.abbr} Property Tax &amp; Mortgage FAQs
+        </h2>
+        <div className="space-y-3 text-sm text-slate-700">
+          <div>
+            <h3 className="font-semibold text-slate-900">
+              What is the property tax rate in {county.name}, {state.name}?
+            </h3>
+            <p className="mt-1">
+              The effective property tax rate on owner-occupied housing in {county.name},{' '}
+              {state.name} is {county.ratePct.toFixed(2)}%, which is {diffText} (
+              {state.propertyTaxRatePct.toFixed(2)}%).
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-slate-900">
+              How much is property tax on a {usd(EXAMPLE_HOME_PRICE)} home in {county.name},{' '}
+              {state.abbr}?
+            </h3>
+            <p className="mt-1">
+              At an effective rate of {county.ratePct.toFixed(2)}%, a {usd(EXAMPLE_HOME_PRICE)} home
+              in {county.name} has an estimated annual property tax of about {usd(taxOnExample)}{' '}
+              (around {usd(Math.round(taxOnExample / 12))} per month). The median annual property
+              tax bill in {county.name} is{' '}
+              {topCoded ? 'over $10,000' : usd(county.medianTax)}.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <p className="mt-6 text-xs text-slate-500">
         Rates are effective property tax rates on owner-occupied housing, based on 2024 American Community
         Survey 5-year estimates. Source: {PROPERTY_TAX_SOURCE}. Your actual tax bill depends on your

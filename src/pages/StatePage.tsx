@@ -6,6 +6,10 @@ import { loadCounties, countyUrl, type County } from '../lib/counties';
 import { PROPERTY_TAX_DATA_YEAR, PROPERTY_TAX_SOURCE } from '../data/states';
 import { usePageSeo } from '../lib/seo';
 
+// 금액을 $1,234 형태로 보여주는 함수
+const usd = (n: number) =>
+  n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
 // /mortgage/:state 주소에 보여줄 주별 페이지
 export default function StatePage() {
   // 주소에서 :state 부분을 꺼냅니다. (예: /mortgage/texas -> "texas")
@@ -64,6 +68,9 @@ export default function StatePage() {
     );
   }
 
+  const annualTaxOn400k = Math.round((400000 * state.propertyTaxRatePct) / 100);
+  const monthlyTaxOn400k = Math.round(annualTaxOn400k / 12);
+
   return (
     <div>
       <Link to="/" className="text-sm text-blue-600 underline">
@@ -117,6 +124,36 @@ export default function StatePage() {
           )}
         </section>
       )}
+
+      {/* 미국 검색엔진 롱테일 키워드 및 FAQPage 스키마 매칭용 FAQ 섹션 */}
+      <section className="mt-8 space-y-4 rounded-xl bg-white p-5 shadow">
+        <h2 className="text-xl font-bold text-slate-900">
+          {state.name} Mortgage &amp; Property Tax FAQs
+        </h2>
+        <div className="space-y-3 text-sm text-slate-700">
+          <div>
+            <h3 className="font-semibold text-slate-900">
+              What is the average property tax rate in {state.name}?
+            </h3>
+            <p className="mt-1">
+              The statewide average effective property tax rate on owner-occupied housing in{' '}
+              {state.name} is {state.propertyTaxRatePct.toFixed(2)}% ({PROPERTY_TAX_DATA_YEAR}{' '}
+              data).
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-slate-900">
+              How much is property tax on a $400,000 home in {state.name}?
+            </h3>
+            <p className="mt-1">
+              At the {state.name} average rate of {state.propertyTaxRatePct.toFixed(2)}%, a
+              $400,000 home has an estimated property tax of about {usd(annualTaxOn400k)} per year
+              (around {usd(monthlyTaxOn400k)} per month), though exact bills vary by county and
+              school district.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <p className="mt-6 text-xs text-slate-500">
         Property tax rate: statewide average effective rate on owner-occupied housing ({PROPERTY_TAX_DATA_YEAR}).
