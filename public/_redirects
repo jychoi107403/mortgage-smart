@@ -1,0 +1,4 @@
+# Cloudflare Pages: 어떤 주소로 직접 접속하거나 새로고침해도 index.html을 보여줍니다.
+# (React Router가 브라우저에서 주소에 맞는 화면을 그립니다.)
+/*    /index.html   200
+
