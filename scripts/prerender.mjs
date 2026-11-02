@@ -246,3 +246,4 @@ for (const state of states) {
 }
 
 console.log(`정적 HTML 사전 생성(SSG) 완료: 총 ${count}개 페이지 생성됨`);
+

@@ -7,6 +7,7 @@ import AffordabilityPage from './pages/AffordabilityPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import AboutPage from './pages/AboutPage';
+import { SisterSitesTopBar, SisterSitesFooterHub } from './components/SisterSitesBar';
 import { usePageSeo } from './lib/seo';
 
 // 홈 화면 컴포넌트 (홈 전용 SEO 메타태그 설정 포함)
@@ -33,10 +34,13 @@ function HomePage() {
   );
 }
 
-// 앱의 바깥 틀(상단 헤더 + 본문 라우트 + 하단 푸터)입니다.
+// 앱의 바깥 틀(7개 자매 사이트 상단 바 + 상단 헤더 + 본문 라우트 + 하단 푸터)입니다.
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+      {/* 7개 자매 사이트 통합 네트워크 상단 바 */}
+      <SisterSitesTopBar currentSiteId="mortgage-smart" />
+
       {/* 상단 네비게이션 헤더 */}
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-3 px-6 py-4">
@@ -92,7 +96,7 @@ export default function App() {
         </Routes>
       </main>
 
-      {/* 하단 푸터 (면책 문구 + 법적 고지 링크 + 자매 사이트 링크) */}
+      {/* 하단 푸터 (면책 문구 + 법적 고지 링크 + 7개 자매 사이트 허브) */}
       <footer className="mt-12 border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-4xl px-6 py-6 text-xs text-slate-500 space-y-3">
           <p>
@@ -122,6 +126,9 @@ export default function App() {
               </a>
             </nav>
           </div>
+
+          {/* 7개 자매 사이트 통합 허브 */}
+          <SisterSitesFooterHub currentSiteId="mortgage-smart" />
         </div>
       </footer>
     </div>
