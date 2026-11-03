@@ -12,6 +12,9 @@
       gtag('config', 'G-ZS5PRJ8F1H');
     </script>
 
+    <!-- 구글 서치 콘솔 (Google Search Console 사이트 소유권 확인 메타태그) -->
+    <meta name="google-site-verification" content="google8dfc27124880d18e" />
+
     <!-- 브라우저 탭 아이콘 (집 모양 SVG 파비콘) -->
     <link
       rel="icon"
@@ -69,21 +72,39 @@
       content="Instant mortgage and property tax calculator covering all 50 US states and 3,131 counties."
     />
 
-    <!-- 구글 구조화 데이터 (JSON-LD: 검색 결과에 금융 웹앱 정보 표시) -->
+    <!-- 구글 구조화 데이터 (JSON-LD: WebApplication + Organization 7개 네트워크) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "MortgageSmart US Mortgage & Property Tax Calculator",
-        "url": "https://mortgage.bangjang.net/",
-        "description": "Free US mortgage payment and home affordability calculator with 50-state and county-level effective property tax rates.",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "All",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "MortgageSmart US Mortgage & Property Tax Calculator",
+            "url": "https://mortgage.bangjang.net/",
+            "description": "Free US mortgage payment and home affordability calculator with 50-state and county-level effective property tax rates.",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "All",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "Organization",
+            "name": "US Smart Finance Network",
+            "url": "https://mortgage.bangjang.net/",
+            "sameAs": [
+              "https://mortgage.bangjang.net",
+              "https://paycheck.bangjang.net",
+              "https://autoloan.bangjang.net",
+              "https://1099tax.bangjang.net",
+              "https://401k.bangjang.net",
+              "https://heloc.bangjang.net",
+              "https://rentalroi.bangjang.net"
+            ]
+          }
+        ]
       }
     </script>
   </head>
